@@ -8045,7 +8045,6 @@ static void __noclone vmx_vcpu_run(struct kvm_vcpu *vcpu)
 		vmcs_write32(PAGE_FAULT_ERROR_CODE_MATCH,PFERR_FETCH_MASK);
 		vmcs_write32(EXCEPTION_BITMAP,vmcs_read32(EXCEPTION_BITMAP)|(1<<BP_VECTOR));
 	}
-	}
 	/*clear old ssdt content*/
 		if(vcpu->kvm->is_alloc==1&&newfun!=0&&clearold==0){
 	/*ZW*function will use kifastcallentry,so set it use new one*/

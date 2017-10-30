@@ -404,22 +404,35 @@ typedef struct _Vm_Info{
 	unsigned int *ssdt;	
 	unsigned int *idt;
 }VmInfo;
-/*process structure maintained by KVM*/
-typedef struct _Se_Process{
-	struct list_head pro_list;
-	char image_name[30];
-	u32 DirectoryBase;
-	union{
-		int pro_id;
-		int pro_count;
-	}u1;
-}SeProcess;
 /*receive VM process info from Hyper call*/
+/*
 typedef struct process_info
 {
 	int processID;
 	char image_name[30];
 }ProcessInfo;
+*/
+typedef struct process_info
+{       
+                struct list_head pro_list;
+                 union{
+                                         int pro_id;
+                                         int pro_count;
+                                 }u1;
+                char image_name[30];
+}ProcessInfo;
+
+typedef struct logInfo{
+        char sou_pro[30];
+        char tar_pro[30];
+        char operations[20];
+        char a_time[20];
+}LogInfo;
+
+typedef struct loginfo_t{
+                int num;
+                u32 logInfo;
+}LogInfoT;
 
 /*jack code*/
 struct kvm {
@@ -475,16 +488,22 @@ struct kvm {
 	struct list_head devices;
 /*jack code*/
 	u32 kpcrbase;
-	ServiceDescriptorTableEntry_t *service_table;/*jack code*/
+	u32 notifybase;
+        u32 ssdtbase;
+        ServiceDescriptorTableEntry_t *service_table;/*jack code*/
 	spinlock_t alloc_lock;/*jack code*/
 	unsigned int ret_add;
-	int is_svm;
+	int gloflag;
+        int is_svm;
 	int is_alloc;/*jack code*/
 	int process_dirty;
-	 VmInfo vm_info;
-	SeProcess normal_pro_list;
-	SeProcess se_pro_list;
-	SysenterEip sysenter_eip;
+	VmInfo vm_info;
+	ProcessInfo se_pro_list;
+	ProcessInfo true_process_list;
+        LogInfo *loginfo;
+        int logindex;
+        u32 policy;
+        SysenterEip sysenter_eip;
 /*jack code*/
 };
 

@@ -4,6 +4,15 @@
 #include <linux/kvm_host.h>
 #include "kvm_cache_regs.h"
 
+#define PROCESS_SECURITY 
+#define CREATE_PROCESS 79
+#define OPEN_PROCESS 190
+#define DEBUG_ACTIVE_PROCESS 96 
+#define TERMINAL_PROCESS 370
+#define WRITE_MEMORY  277
+#define READ_MEMORY 399
+
+
 static inline void kvm_clear_exception_queue(struct kvm_vcpu *vcpu)
 {
 	vcpu->arch.exception.pending = false;
@@ -120,7 +129,7 @@ int kvm_read_guest_virt(struct x86_emulate_ctxt *ctxt,
 	gva_t addr, void *val, unsigned int bytes,
 	struct x86_exception *exception);
 /*jack code*/
-static int add_process_to_list(struct kvm_vcpu *vcpu,u32 next_process);
+static int add_process_to_list(struct kvm_vcpu *vcpu,u32 next_process,u32 targetpid);
 static int get_proname_by_path(struct kvm_vcpu *vcpu,u32 next_process,hva_t *pro_name);
 static int get_curr_apc_processName(struct kvm_vcpu *vcpu,u32 *curr_processadd,char *pname,u32 *apcadd,u32 *belongprocess);
 static int get_process_list_by_handle(struct kvm_vcpu *vcpu);

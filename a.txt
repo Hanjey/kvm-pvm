@@ -1,0 +1,2568 @@
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘kvm_get_spte32’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4011:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         unsigned long walk_2=spte1&0xfffff000;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4013:9: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘gva_t’ [-Wformat=]
+         printk("0x%08x----spte-value----0x%08x\n",addr,spte);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4013:9: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘u64 *’ [-Wformat=]
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘kvm_get_spte_pae’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4039:9: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+         if(pdspte&0x1==0)
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4041:27: warning: suggest parentheses around arithmetic in operand of ‘|’ [-Wparentheses]
+         u64  walk_2=pdspte&(~0xfff)|(offset_2*8);
+                           ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4041:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         u64  walk_2=pdspte&(~0xfff)|(offset_2*8);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4042:9: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+         if(pdspte&0x80==1)
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4045:9: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+         if((ptspte)&0x1==0)
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4047:9: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+         if(ptspte&0x80==1)
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4049:26: warning: suggest parentheses around arithmetic in operand of ‘|’ [-Wparentheses]
+         u64 walk_3=ptspte&(~0xfff)|(offset_3*8);
+                          ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4049:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         u64 walk_3=ptspte&(~0xfff)|(offset_3*8);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘viewSlotInfo’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4092:9: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+         printk("slot npages:0x%08x\n",slot->npages);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4093:9: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+         printk("slot userspace_addr:0x%08x\n",slot->userspace_addr);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4097:9: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int *’ [-Wformat=]
+         printk("slot bitmap:0x%08x\n",slot->dirty_bitmap);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘kvm_alloc_vm_page1’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4144:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         int i=0,r=0,d=0;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4161:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         u64 new_spte;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4163:9: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+         if(new_spte&0x1==0){
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4168:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         u32 new_gfn=new_spte>>12; 
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4170:9: warning: format ‘%llx’ expects argument of type ‘long long unsigned int’, but argument 2 has type ‘u32’ [-Wformat=]
+         printk("mmpfn:%llx\n",mmpfn);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4172:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         u32 pfn_e3;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4179:1: warning: format ‘%llx’ expects argument of type ‘long long unsigned int’, but argument 2 has type ‘gva_t’ [-Wformat=]
+ printk("new_add=%llx\n",new_add);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4180:1: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+ unsigned int value;
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4183:1: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+ if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,new_add,&data,4, NULL)){
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4190:1: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+ u64 last_spte;
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4193:1: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘u64’ [-Wformat=]
+ printk("target page sptep address:%016x\n",sptep);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4195:1: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘u64’ [-Wformat=]
+ printk("target_original_phy:0x%016x\n",sptec);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4199:1: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘u64’ [-Wformat=]
+ printk("after change write access:%016x\n",last_spte);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4132:22: warning: unused variable ‘page_offset’ [-Wunused-variable]
+         unsigned int page_offset;
+                      ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘kvm_write_guest_virt_system’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4287:25: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘gpa_t’ [-Wformat=]
+                         printk("error GPA :%016x-------corrgva:%016x\n",gpa,addr);
+                         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4287:25: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘gva_t’ [-Wformat=]
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘del_list’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:5885:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         struct list_head *temp,*p;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘foreach_process_list’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:5908:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         struct list_head *p=head->next;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘query_se_process’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:5933:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         int i=0;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:5951:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         int a=-1;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘add_se_process’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:5996:20: warning: unused variable ‘temp’ [-Wunused-variable]
+         SeProcess *temp;
+                    ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘get_proname_by_path’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6066:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         int i=0,a=0;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘add_process_to_list’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6095:9: warning: passing argument 3 of ‘get_proname_by_path’ from incompatible pointer type [enabled by default]
+         if(get_proname_by_path(vcpu,next_process,tempNode->image_name)==0)
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6050:12: note: expected ‘hva_t *’ but argument is of type ‘char *’
+ static int get_proname_by_path(struct kvm_vcpu *vcpu,u32 next_process,hva_t *pro_name){
+            ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6083:13: warning: unused variable ‘punicode_name’ [-Wunused-variable]
+         u32 punicode_name;  
+             ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘get_curr_apc_processName’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6119:9: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+         printk("kpcrbase:%08x\n",kpcrbase);
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6147:9: warning: passing argument 3 of ‘get_proname_by_path’ from incompatible pointer type [enabled by default]
+         if(get_proname_by_path(vcpu,curr_process,pname)==0){
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6050:12: note: expected ‘hva_t *’ but argument is of type ‘char *’
+ static int get_proname_by_path(struct kvm_vcpu *vcpu,u32 next_process,hva_t *pro_name){
+            ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘get_curr_processName’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6170:83: error: ‘curr_thread’ undeclared (first use in this function)
+         if (kvm_read_guest_virt_system(&vcpu->arch.emulate_ctxt, kpcrbase+0x124, &curr_thread,
+                                                                                   ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6170:83: note: each undeclared identifier is reported only once for each function it appears in
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6184:9: warning: passing argument 3 of ‘get_proname_by_path’ from incompatible pointer type [enabled by default]
+         if(get_proname_by_path(vcpu,curr_process,pname)==0){
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6050:12: note: expected ‘hva_t *’ but argument is of type ‘char *’
+ static int get_proname_by_path(struct kvm_vcpu *vcpu,u32 next_process,hva_t *pro_name){
+            ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6161:13: warning: unused variable ‘curr_apc’ [-Wunused-variable]
+         u32 curr_apc;
+             ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘brosetable3’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6227:13: warning: unused variable ‘limit’ [-Wunused-variable]
+         u32 limit=1024;
+             ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘brosetable2’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6246:13: warning: unused variable ‘limit’ [-Wunused-variable]
+         u32 limit=1024;
+             ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘jack_handle_op’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6329:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+         unsigned int ret=0;
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘kvm_emulate_hypercall’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6420:17: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+                 printk("eax:%d\n",nr);
+                 ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6468:9: warning: label ‘out’ defined but not used [-Wunused-label]
+         out:
+         ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘kvm_arch_async_page_not_present’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8179:39: error: expected declaration specifiers before ‘sizeof’
+                                       sizeof(val));
+                                       ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8180:1: error: expected declaration specifiers before ‘}’ token
+ }
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8184:39: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘sizeof’
+                                       sizeof(val));
+                                       ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8185:1: error: expected declaration specifiers before ‘}’ token
+ }
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8189:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8211:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8234:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_exit’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_exit’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_exit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: error: parameter ‘__kcrctab___tracepoint_kvm_exit’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_exit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_exit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: error: parameter ‘__kstrtab___tracepoint_kvm_exit’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_exit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_exit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_exit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_exit’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_exit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8241:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_exit);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_inj_virq’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_inj_virq’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_inj_virq’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: error: parameter ‘__kcrctab___tracepoint_kvm_inj_virq’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_inj_virq’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_inj_virq’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: error: parameter ‘__kstrtab___tracepoint_kvm_inj_virq’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_inj_virq’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_inj_virq’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_inj_virq’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_inj_virq’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_inj_virq’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8242:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_inj_virq);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_page_fault’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_page_fault’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_page_fault’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: error: parameter ‘__kcrctab___tracepoint_kvm_page_fault’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_page_fault’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_page_fault’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: error: parameter ‘__kstrtab___tracepoint_kvm_page_fault’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_page_fault’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_page_fault’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_page_fault’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_page_fault’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_page_fault’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8243:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_page_fault);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_msr’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_msr’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_msr’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: error: parameter ‘__kcrctab___tracepoint_kvm_msr’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_msr’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_msr’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: error: parameter ‘__kstrtab___tracepoint_kvm_msr’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_msr’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_msr’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_msr’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_msr’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_msr’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8244:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_msr);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_cr’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_cr’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_cr’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: error: parameter ‘__kcrctab___tracepoint_kvm_cr’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_cr’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_cr’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: error: parameter ‘__kstrtab___tracepoint_kvm_cr’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_cr’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_cr’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_cr’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_cr’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_cr’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8245:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_cr);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_nested_vmrun’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_nested_vmrun’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_nested_vmrun’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: error: parameter ‘__kcrctab___tracepoint_kvm_nested_vmrun’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_nested_vmrun’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_nested_vmrun’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: error: parameter ‘__kstrtab___tracepoint_kvm_nested_vmrun’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_nested_vmrun’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_nested_vmrun’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_nested_vmrun’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_nested_vmrun’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_nested_vmrun’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8246:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmrun);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_nested_vmexit’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_nested_vmexit’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_nested_vmexit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: error: parameter ‘__kcrctab___tracepoint_kvm_nested_vmexit’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_nested_vmexit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_nested_vmexit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: error: parameter ‘__kstrtab___tracepoint_kvm_nested_vmexit’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_nested_vmexit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_nested_vmexit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_nested_vmexit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_nested_vmexit’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_nested_vmexit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8247:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_nested_vmexit_inject’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_nested_vmexit_inject’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_nested_vmexit_inject’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: error: parameter ‘__kcrctab___tracepoint_kvm_nested_vmexit_inject’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_nested_vmexit_inject’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_nested_vmexit_inject’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: error: parameter ‘__kstrtab___tracepoint_kvm_nested_vmexit_inject’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_nested_vmexit_inject’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_nested_vmexit_inject’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_nested_vmexit_inject’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_nested_vmexit_inject’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_nested_vmexit_inject’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8248:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_vmexit_inject);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_nested_intr_vmexit’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_nested_intr_vmexit’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_nested_intr_vmexit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: error: parameter ‘__kcrctab___tracepoint_kvm_nested_intr_vmexit’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_nested_intr_vmexit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_nested_intr_vmexit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: error: parameter ‘__kstrtab___tracepoint_kvm_nested_intr_vmexit’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_nested_intr_vmexit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_nested_intr_vmexit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_nested_intr_vmexit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_nested_intr_vmexit’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_nested_intr_vmexit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8249:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intr_vmexit);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_invlpga’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_invlpga’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_invlpga’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: error: parameter ‘__kcrctab___tracepoint_kvm_invlpga’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_invlpga’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_invlpga’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: error: parameter ‘__kstrtab___tracepoint_kvm_invlpga’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_invlpga’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_invlpga’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_invlpga’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_invlpga’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_invlpga’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8250:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_invlpga);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_skinit’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_skinit’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_skinit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: error: parameter ‘__kcrctab___tracepoint_kvm_skinit’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_skinit’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_skinit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: error: parameter ‘__kstrtab___tracepoint_kvm_skinit’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_skinit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_skinit’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_skinit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_skinit’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_skinit’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8251:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_skinit);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_nested_intercepts’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_nested_intercepts’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_nested_intercepts’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: error: parameter ‘__kcrctab___tracepoint_kvm_nested_intercepts’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_nested_intercepts’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_nested_intercepts’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: error: parameter ‘__kstrtab___tracepoint_kvm_nested_intercepts’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_nested_intercepts’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_nested_intercepts’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_nested_intercepts’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_nested_intercepts’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_nested_intercepts’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8252:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_nested_intercepts);
+ ^
+include/linux/tracepoint.h:208:20: error: storage class specified for parameter ‘__tracepoint_kvm_write_tsc_offset’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+                    ^
+include/linux/export.h:57:21: note: in definition of macro ‘__EXPORT_SYMBOL’
+  extern typeof(sym) sym;     \
+                     ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+include/linux/export.h:46:15: error: storage class specified for parameter ‘__crc___tracepoint_kvm_write_tsc_offset’
+  extern void *__crc_##sym __attribute__((weak));  \
+               ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: warning: ‘weak’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: storage class specified for parameter ‘__kcrctab___tracepoint_kvm_write_tsc_offset’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: error: parameter ‘__kcrctab___tracepoint_kvm_write_tsc_offset’ is initialized
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: warning: ‘__used__’ attribute ignored [-Wattributes]
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:47:29: error: section attribute not allowed for ‘__kcrctab___tracepoint_kvm_write_tsc_offset’
+  static const unsigned long __kcrctab_##sym  \
+                             ^
+include/linux/export.h:58:2: note: in expansion of macro ‘__CRC_SYMBOL’
+  __CRC_SYMBOL(sym, sec)     \
+  ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+include/linux/export.h:59:20: error: storage class specified for parameter ‘__kstrtab___tracepoint_kvm_write_tsc_offset’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: error: parameter ‘__kstrtab___tracepoint_kvm_write_tsc_offset’ is initialized
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:59:20: error: section attribute not allowed for ‘__kstrtab___tracepoint_kvm_write_tsc_offset’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+include/linux/export.h:59:20: error: alignment may not be specified for ‘__kstrtab___tracepoint_kvm_write_tsc_offset’
+  static const char __kstrtab_##sym[]   \
+                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+include/linux/export.h:62:36: error: storage class specified for parameter ‘__ksymtab___tracepoint_kvm_write_tsc_offset’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+include/linux/export.h:62:22: error: parameter ‘__ksymtab___tracepoint_kvm_write_tsc_offset’ is initialized
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+include/linux/export.h:62:22: warning: ‘__used__’ attribute ignored [-Wattributes]
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+include/linux/export.h:62:36: error: section attribute not allowed for ‘__ksymtab___tracepoint_kvm_write_tsc_offset’
+  static const struct kernel_symbol __ksymtab_##sym \
+                                    ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8177:6: error: old-style parameter declarations in prototyped function definition
+ void kvm_arch_async_page_not_present(struct kvm_vcpu *vcpu,
+      ^
+In file included from include/linux/linkage.h:6:0,
+                 from arch/x86/include/asm/cache.h:4,
+                 from arch/x86/include/asm/segment.h:148,
+                 from arch/x86/include/asm/ptrace.h:4,
+                 from arch/x86/include/asm/vm86.h:5,
+                 from arch/x86/include/asm/processor.h:10,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/asm/kvm_para.h:38,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/include/linux/kvm_para.h:72,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/../external-module-compat-comm.h:14,
+                 from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/external-module-compat.h:26,
+                 from <command-line>:0:
+include/linux/export.h:62:22: error: expected ‘{’ at end of input
+  static const struct kernel_symbol __ksymtab_##sym \
+                      ^
+include/linux/export.h:71:2: note: in expansion of macro ‘__EXPORT_SYMBOL’
+  __EXPORT_SYMBOL(sym, "_gpl")
+  ^
+include/linux/tracepoint.h:208:2: note: in expansion of macro ‘EXPORT_SYMBOL_GPL’
+  EXPORT_SYMBOL_GPL(__tracepoint_##name)
+  ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8253:1: note: in expansion of macro ‘EXPORT_TRACEPOINT_SYMBOL_GPL’
+ EXPORT_TRACEPOINT_SYMBOL_GPL(kvm_write_tsc_offset);
+ ^
+In file included from /root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:62:0:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: At top level:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.h:126:12: warning: ‘get_process_list_by_handle’ declared ‘static’ but never defined [-Wunused-function]
+ static int get_process_list_by_handle(struct kvm_vcpu *vcpu);
+            ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6160:12: warning: ‘get_curr_processName’ defined but not used [-Wunused-function]
+ static int get_curr_processName(struct kvm_vcpu *vcpu,char *pname,u32 *processadd){
+            ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:4084:14: warning: ‘newssdt_gva’ defined but not used [-Wunused-variable]
+ static gva_t newssdt_gva;
+              ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8119:13: warning: ‘kvm_add_async_pf_gfn’ defined but not used [-Wunused-function]
+ static void kvm_add_async_pf_gfn(struct kvm_vcpu *vcpu, gfn_t gfn)
+             ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8147:13: warning: ‘kvm_del_async_pf_gfn’ defined but not used [-Wunused-function]
+ static void kvm_del_async_pf_gfn(struct kvm_vcpu *vcpu, gfn_t gfn)
+             ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:8170:12: warning: ‘apf_put_user’ defined but not used [-Wunused-function]
+ static int apf_put_user(struct kvm_vcpu *vcpu, u32 val)
+            ^
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c: In function ‘get_process_list_by_handletable’:
+/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.c:6377:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make[3]: *** [/root/sourcecode/kvm-pprocess/kvm-pvm/x86/x86.o] Error 1
+make[2]: *** [/root/sourcecode/kvm-pprocess/kvm-pvm/x86] Error 2
+make[1]: *** [_module_/root/sourcecode/kvm-pprocess/kvm-pvm] Error 2
+make: *** [all] Error 2

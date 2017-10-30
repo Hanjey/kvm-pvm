@@ -49,15 +49,18 @@
 #define KVM_E2BIG		E2BIG
 #define KVM_EPERM		EPERM
 /*add by jack*/
+/*
 #define JACK_OP_CODE 20
 #define KVM_ENABLE_SECURITY 21
 #define KVM_DISABLE_SECURITY 22
 #define PROCDESS_QUERY_CODE 24
+*/
 /*sub op code by jack*/
+/*
 #define KVM_ADD_SE_PROCESS 1
 #define KVM_REMOVE_SE_PROCESS 2
 
-
+*/
 
 
 

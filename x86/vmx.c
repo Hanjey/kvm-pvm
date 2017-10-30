@@ -65,6 +65,9 @@
 #include <linux/ftrace_event.h>
 #include <linux/slab.h>
 #include <linux/tboot.h>
+#include <linux/time.h>
+#include <linux/timex.h>
+#include <linux/rtc.h>
 #include "kvm_cache_regs.h"
 #include "x86.h"
 
@@ -4828,7 +4831,6 @@ static int handle_to_pid(struct kvm_vcpu *vcpu,u32 processhandle,u32 *pname,u32 
 	}
 	if(processObj!=NULL&&objectadd!=0)
 		*processObj=objectadd;
-	printk("object add:%08x\n",objectadd);
 	if (kvm_read_guest_virt_system(&vcpu->arch.emulate_ctxt, objectadd+0xb4, &processID,
 				sizeof(processID), NULL)) {
 		printk("read guest processID fail!\n");
@@ -4849,7 +4851,7 @@ static bool process_is_in_sec(struct kvm_vcpu *vcpu,char *pname,u64 *sep){
 		return 1;//is security process
 }
 /*is source process a third process*/
-static int is_third_process(struct kvm_vcpu *vcpu,SeProcess *sep){
+static int is_third_process(char *sou_name,ProcessInfo *sep){
 	u32 processadd;
 	u32 pid;
 	/*get current CR3*/
@@ -4864,150 +4866,106 @@ static int is_third_process(struct kvm_vcpu *vcpu,SeProcess *sep){
 		}*/
 	char *validprocess="explorer.exe";
 	char *validprocess1="csrss.exe";
-	u32 currpid;
-	char pname[30];
-	if(get_curr_processName(vcpu,pname,NULL)==0)
-		return 0;
-	printk("source process:%s----------------------target process:%s\n",pname,sep->image_name);
+        char *validprocess2="svchost.exe";
+	printk("source process:%s----------------------target process:%s\n",sou_name,sep->image_name);
 	/*is process self*/
-	if(strcmp(pname,sep->image_name)==0)
+	if(strcmp(sou_name,sep->image_name)==0)
 		return 0;
 	/*explorer is valid parent process*/
-	if(strcmp(pname,validprocess)==0||strcmp(pname,validprocess1)==0)
+	if(strcmp(sou_name,validprocess)==0||strcmp(sou_name,validprocess1)==0||strcmp(sou_name,validprocess2)==0)
 		return 0;
 	return 1;
 }
-/*handle invalid handle*/
-static int handle_invalid_handle(struct kvm_vcpu *vcpu,int nr){
-	u32 tempadd;
-	u32 curr_pid;
-	char curr_pname[30];
-	SeProcess *sep;
-	switch (nr){
-		/*terminate process*/
-		case 370:
-			if(curr_pid=get_curr_processName(vcpu,curr_pname,&tempadd)==0)
-				return 0;
-			if(sep=find_se_process_by_pid(&vcpu->kvm->normal_pro_list.pro_list,curr_pid)!=NULL){
-				del_list(&vcpu->kvm->normal_pro_list.pro_list,sep);
-				printk("close process%d------ %s\n",curr_pid,curr_pname);
-			}
-			break;
-		case 277:
-			/*if create process is called just now!*/
-			if(vcpu->kvm->process_dirty==0)
-				return 0;
-			/*get current process name*/
-			if(curr_pid=get_curr_processName(vcpu,curr_pname,&tempadd)==0)
-				return 0;
-			/*if pname exit ,is pid exit?if not ,add process*/
-			if(find_se_process_by_pid(&vcpu->kvm->normal_pro_list.pro_list,curr_pid)!=NULL)
-				return 0;
-			if(add_process_to_list(vcpu,tempadd)==0)
-				return 0;
-			printk("add process %d ----%s\n",curr_pid,curr_pname);
-			vcpu->kvm->process_dirty==0;
-
-			break;
-		case 399:
-			/*if create process is called just now!*/
-			if(vcpu->kvm->process_dirty==0)
-				return 0;
-			/*get current process name*/
-			if(curr_pid=get_curr_processName(vcpu,curr_pname,&tempadd)==0)
-				return 0;
-			/*if pname exit ,is pid exit?if not ,add process*/
-			if(find_se_process_by_pid(&vcpu->kvm->normal_pro_list.pro_list,curr_pid)!=NULL)
-				return 0;
-			if(add_process_to_list(vcpu,tempadd)==0)
-				return 0;
-			printk("add process %d ----%s\n",curr_pid,curr_pname);
-			vcpu->kvm->process_dirty==0;
-			break;
-		default: return 0;
-			 break;
-	}
-
-	return 1;
-}
-
-
 /*handle not sec process*/
-
-static int handle_notsec_pro(struct kvm_vcpu *vcpu,int nr,u32 curr_pid,u32 tempadd){
-	SeProcess *sep;
-	switch (nr){
-		/*terminate process*/
-		case 370:
-			if(sep=find_se_process_by_pid(&vcpu->kvm->normal_pro_list.pro_list,curr_pid)!=NULL)
-				del_list(&vcpu->kvm->normal_pro_list.pro_list,sep);
-			printk("close process%d\n",curr_pid);
-			break;
-			/*read memoey*/
-		case 277:
-			if(vcpu->kvm->process_dirty==0)
-				return 0;
-			if(find_se_process_by_pid(&vcpu->kvm->normal_pro_list.pro_list,curr_pid)!=NULL)
-				return 0;	
-			if(add_process_to_list(vcpu,tempadd)==0)
-				return 0;
-			printk("add process %d\n",curr_pid);
-			vcpu->kvm->process_dirty==0;
-
-			break;
-			/*write memory*/
-		case 399:
-			if(vcpu->kvm->process_dirty==0)
-				return 0;
-			if(find_se_process_by_pid(&vcpu->kvm->normal_pro_list.pro_list,curr_pid)!=NULL)
-				return 0;
-			if(add_process_to_list(vcpu,tempadd)==0)
-				return 0;
-			printk("add process %d\n",curr_pid);
-			vcpu->kvm->process_dirty==0;
-			break;
-		default:return 1;
-			break;
-	}
-	return 1;
+#define PROCESS_BEHAVIOR_MASK 0xFFFFFFFF
+void getop(char *op,unsigned int behav){
+        u32 a=behav&PROCESS_BEHAVIOR_MASK;
+        switch(a){
+                case 1:strcpy(op,"ReadMemory");
+                break;
+                case 2:strcpy(op,"WriteMemory");
+                break;
+                case 4:strcpy(op,"AttachProcess");
+                break;
+                case 8:strcpy(op,"TerminateProcess");
+                break;
+                case 16:
+                break;
+                case 32:
+                break;
+                case 64:
+                break;
+                case 128:
+                break;
+                case 256:
+                break;
+                default:
+                break;
+        }
 }
+static int getNowTime(char *time_val){
+                struct timex txc;
+                struct rtc_time tm;
+                do_gettimeofday(&(txc.time));
+                rtc_time_to_tm(txc.time.tv_sec,&tm);
+                sprintf(time_val, "%04d/%02d/%02d-%02d:%02d:%02d",tm.tm_year+1900
+                                               ,tm.tm_mon+1
+                                               ,tm.tm_mday
+                                               ,tm.tm_hour+8
+                                               ,tm.tm_min
+                                               ,tm.tm_sec);
+                return 0;
+} 
+
+int recordBehavior(struct kvm_vcpu *vcpu,char *source,char *tar,unsigned int behav){
+        char operation[20];
+        char time_val[20];
+        getop(operation,behav);
+        getNowTime(time_val);
+        printk("%s %s %s %s\n",source,operation,tar,time_val);
+        LogInfo *temp=vcpu->kvm->loginfo;
+        int index=vcpu->kvm->logindex;
+        if(index<50){
+                strcpy(temp[index].sou_pro,source);
+                strcpy(temp[index].tar_pro,tar);
+                strcpy(temp[index].operations,operation);
+                strcpy(temp[index].a_time,time_val);
+                vcpu->kvm->logindex++;
+        }
+        return 1;
+}
+
 /*different operation according syscall number*/
 static int handle_exit_by_vmcall(struct kvm_vcpu *vcpu,int nr,u32 processHandle){
 	u32 nr_add;
 	u64  sepp=0;
-	u32 curr_pid;
 	u32 objadd;
-	char pname[30];
+	char tar_name[30];
+        char sou_name[30];
 	/*handle not normal situation*/
 	if(processHandle==0x0||processHandle==0xFFFFFFFF||processHandle==-1){
-		printk("nr in invalidhandle:%d\n",nr);
-	//	handle_invalid_handle(vcpu,nr);
+	//	printk("nr %d in invalidhandle:%d\n",nr,processHandle);
 		goto end_handle;	
 	}
-	curr_pid=handle_to_pid(vcpu,processHandle,pname,&objadd);
-	printk("curr_pid:%d-------pname:%s\n",curr_pid,pname);
-	if(!process_is_in_sec(vcpu,pname,&sepp))
+        /*get target process name and source process name*/
+        get_curr_processName(vcpu,sou_name,NULL);
+	handle_to_pid(vcpu,processHandle,tar_name,&objadd);
+	if(!process_is_in_sec(vcpu,tar_name,&sepp))
 	{
-		printk("not sec process\n");
-	//	handle_notsec_pro(vcpu,nr,curr_pid,objadd);
 		goto end_handle;
 	}
-	printk("sepp==NULL:%d\n",sepp==NULL);
-	printk("pname:%s\n",pname);
-	printk("nr=%d\n",nr);
-	// goto end_handle;
 	if(!sepp){
 		/*almost not*/
 		printk("sep is NULL!\n");
 		goto end_handle;
 	}
-	SeProcess *sep=(SeProcess *)((u64 *)sepp);
+        ProcessInfo *sep=(ProcessInfo *)((u64 *)sepp);
 	//goto end;
 	switch (nr){
 		/*attach process*/
 		case 96:
-			if(is_third_process(vcpu,sep)){
-                                printk("attach  protected process,deny!\n");
+			if(is_third_process(sou_name,sep)){
+                                recordBehavior(vcpu,sou_name,tar_name,4);
                                 kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
                                 vmcs_writel(GUEST_RIP,vcpu->kvm->sysenter_eip.oldeip+0x12a);
                                 return 1;
@@ -5016,31 +4974,30 @@ static int handle_exit_by_vmcall(struct kvm_vcpu *vcpu,int nr,u32 processHandle)
                         break;
 		/*read memory*/
 		case 277:
-			if(is_third_process(vcpu,sep)){
-				printk("read from  protected process,deny!\n");
-				kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
+			if(is_third_process(sou_name,sep)){
+                                 recordBehavior(vcpu,sou_name,tar_name,1);
+                                kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
 				vmcs_writel(GUEST_RIP,vcpu->kvm->sysenter_eip.oldeip+0x12a);
 				return 1;			
 			}
 			goto end_handle;
 			break;
-			/*terminate process*/
+		/*terminate process*/
 		case 370:
-			if(is_third_process(vcpu,sep)){
-				printk("terminate protected process,deny!\n");
+			if(is_third_process(sou_name,sep)){
+                                recordBehavior(vcpu,sou_name,tar_name,8);
 				kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
 				vmcs_writel(GUEST_RIP,vcpu->kvm->sysenter_eip.oldeip+0x12a);
 				return 1;
 			}
 			goto end_handle;
 			break;
-			/*write memory*/
+		/*write memory*/
 		case 399:
-			if(is_third_process(vcpu,sep)){
-				printk("write to  protected process memory,deny!\n");
-				kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
+			if(is_third_process(sou_name,sep)){
+                                 recordBehavior(vcpu,sou_name,tar_name,2);
+                                kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
 				vmcs_writel(GUEST_RIP,vcpu->kvm->sysenter_eip.oldeip+0x12a);
-				printk("processHandle :%08x\n",processHandle);
 				return 1;
 			}
 			goto end_handle;
@@ -5119,7 +5076,8 @@ static int handle_exception(struct kvm_vcpu *vcpu)
 			u32 guest_esp;
 			guest_esp=vmcs_readl(GUEST_RSP);
 			unsigned long  processHandle;
-			if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+4, &processHandle,
+			/*get processHandle*/
+                        if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+4, &processHandle,
 						sizeof(processHandle), NULL)) {
 				printk("read guest processID fail!\n");
 				return 0;
@@ -7680,12 +7638,14 @@ static int getSSDT(struct kvm_vcpu *vcpu,u64 KpcrBase,ServiceDescriptorTableEntr
 	return 1;
 }
 /*get ssdt address end*/
+#ifndef PROCESS_SECURITY 
 #define CREATE_PROCESS 79
 #define OPEN_PROCESS 190
 #define DEBUG_ACTIVE_PROCESS 96 
 #define TERMINAL_PROCESS 370
 #define WRITE_MEMORY  277
 #define READ_MEMORY 399
+#endif
 /*create new ssdt*/
 static int createNewSsdt(struct kvm_vcpu *vcpu,ServiceDescriptorTableEntry_t *ssdt,u32 newSsdtBase){
 	u64 *ssdt_con=&vcpu->kvm->vm_info.ssdt;
@@ -7701,6 +7661,7 @@ static int createNewSsdt(struct kvm_vcpu *vcpu,ServiceDescriptorTableEntry_t *ss
 		return 0;
 	}
 	offset+=sizeof(ServiceDescriptorTableEntry_t);
+        vcpu->kvm->ssdtbase=newSsdtBase+offset;
 	*ssdt_con=(u64)vmx_alloc(1604);
 	printk("*ssdt_con:%p\n",*ssdt_con);
 	printk("vcpu->kvm->vm_info.ssdt:%llx\n",vcpu->kvm->vm_info.ssdt);
@@ -7722,6 +7683,12 @@ static int createNewSsdt(struct kvm_vcpu *vcpu,ServiceDescriptorTableEntry_t *ss
 	/*set ssdt vmexit*/	
 	unsigned int data=0xffffffff;
 	/*clear Target Syscall*/
+        if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newSsdtBase+offset+CREATE_PROCESS*4,&data,4, NULL)){
+                                printk("clear CREATE_PROCESS error,r:%d\n",r);
+                                return 0;
+         }else{
+                printk("clear CREATE_PROCESS OK!\n");
+                        }
 	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newSsdtBase+offset+DEBUG_ACTIVE_PROCESS*4,&data,4, NULL)){
 		return 0;
 	}else{
@@ -7745,12 +7712,38 @@ static int createNewSsdt(struct kvm_vcpu *vcpu,ServiceDescriptorTableEntry_t *ss
 	}else{
 		printk("clear READ_MEMORY OK!\n");
 	}
+        vcpu->kvm->policy=0x0000000f;
 	/*set ssdt vmexit*/
 	newservicetable=newSsdtBase+offset;
 	offset+=1604;
 	return offset;
 
 }
+/*create jmp fun end*/
+static int createNotifyRoutine(struct kvm_vcpu *vcpu,u32 pagebase){
+                int r;
+                /**
+                 *         *
+                 *  push ebp;
+                 *  mov ebp,esp
+                 *  pushad;
+                 *  mov ebx,[ebp+0x10];//create or close
+                 *  mov ecx,[ebp+0x0c];//processID
+                 *  mov eax,26;
+                 *  VMCALL;
+                 *  popad;
+                 *  pop ebp
+                 *  ret 0ch;
+                 **
+                 ** */
+                char code0[] = {0x55, 0x8B, 0xEC, 0x60, 0x8B, 0x5D, 0x10, 0x8B, 0x4D, 0x0c, 0xB8, 0x26, 0x00, 0x00, 0x00, 0x0f, 0x01, 0xc1, 0x61,0x5d, 0xC2, 0x0c, 0x00};
+                 if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,pagebase,code0,23, NULL)){
+                                         printk("create notify routine error:%d\n",r);
+                                         return 0;
+                                 }
+                return 0;
+}
+
 /*create new ssdt*/
 static int createNewSsdttest(struct kvm_vcpu *vcpu){ 
 	if(kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,servicetablebase,newservicetable,4,NULL)){
@@ -7866,13 +7859,15 @@ static int createJmpFun(struct kvm_vcpu *vcpu,u32 fastcallAdd,unsigned int newBa
 	printk("code_ret:%08x\n",newBase+offset);
 	vcpu->kvm->ret_add=newBase+offset;
 	/*set KISystemService*/
-	return offset;
+	offset+=1;
+        return offset;
 }
 static int setSysServiceJmp(struct kvm_vcpu *vcpu,u32 fastcalladd,u32 newfun){
 	/*set KISystemService*/
 	unsigned int r=0;
 	u32 kisysadd=fastcalladd-0xd2+0x7b;
 	/*code_sys code1 in KiSystemService*/
+        /*just a jump to code_sys2 :push ret*/
 	char code_sys[9]={0x68,0x00,0x00,0x00,0x00,0xc3,0x90,0x90,0x90};
 	*(u32 *)&code_sys[1]=newfun;
 	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,kisysadd,code_sys,9, NULL)){
@@ -7946,7 +7941,8 @@ static int deploySecuritySystem(struct kvm_vcpu *vcpu,u32 sysenter_tip,u32 *newf
 		return 0;
 	if(getSSDT(vcpu,kpcrbase,vcpu->kvm->service_table)==0)
 		return 0;
-	if((r=createNewSsdt(vcpu,vcpu->kvm->service_table,newBase))==0)
+        printk("ssdtbase:%08x\n",newBase);
+        if((r=createNewSsdt(vcpu,vcpu->kvm->service_table,newBase))==0)
 		return 0;
 	offset+=r;
 	printk("offset after create SSDT :%d\n",offset);
@@ -7958,12 +7954,15 @@ static int deploySecuritySystem(struct kvm_vcpu *vcpu,u32 sysenter_tip,u32 *newf
 	//	*idtbase=newBase+offset;
 	//	offset+=r;		
 	//	printk("offset after create IDT :%d\n",offset);
-	if((r=createJmpFun(vcpu,sysenter_tip,newBase+offset,newBase,0x99,newfun))==0){
+	 printk("jmpfun:%08x\n",newBase+offset);
+        if((r=createJmpFun(vcpu,sysenter_tip,newBase+offset,newBase,0x99,newfun))==0){
 		return 0;
 	}
 	offset+=r;
 	//offset+=r;
-	printk("new Base address end:%llx\n",newBase+offset);
+        createNotifyRoutine(vcpu,newBase+offset);
+	vcpu->kvm->notifybase=newBase+offset;
+        printk("notify base:%08x\n",vcpu->kvm->notifybase);
 	return 1;
 }
 /*deploy system end*/
@@ -8046,17 +8045,18 @@ static void __noclone vmx_vcpu_run(struct kvm_vcpu *vcpu)
 		vmcs_write32(EXCEPTION_BITMAP,vmcs_read32(EXCEPTION_BITMAP)|(1<<BP_VECTOR));
 	}
 	/*clear old ssdt content*/
-		if(vcpu->kvm->is_alloc==1&&newfun!=0&&clearold==0){
+        if(vcpu->kvm->is_alloc==1&&newfun!=0&&clearold==0){
 	/*ZW*function will use kifastcallentry,so set it use new one*/
-				setSysServiceJmp(vcpu,guest_sysenter_eip,newfun+165);
-				clearOldSsdt(vcpu,vcpu->kvm->service_table->ServiceTableBase);
-				clearold=1;
-		}
+                printk("clear SSDT OK\n");
+		setSysServiceJmp(vcpu,guest_sysenter_eip,newfun+165);
+		clearOldSsdt(vcpu,vcpu->kvm->service_table->ServiceTableBase);
+		clearold=1;
+	}
 	spin_unlock(p_lock);
 	/*set RDMSR/MRMSR VM-EXIT*/
 	u32 vm_exec=vmcs_read32(CPU_BASED_VM_EXEC_CONTROL);
 	//printk("CPU_BASED_VM_EXEC_CONTROL:%08x\n",vm_exec);
-	if((vm_exec&CPU_BASED_USE_MSR_BITMAPS)){
+	if((vcpu->kvm->is_alloc==1&&(vm_exec&CPU_BASED_USE_MSR_BITMAPS))){
 		//printk("not use msr bitmap,set it!\n");
 			vm_exec &= ~CPU_BASED_USE_MSR_BITMAPS;
 			vmcs_write32(CPU_BASED_VM_EXEC_CONTROL,vm_exec);

@@ -512,16 +512,21 @@ static struct kvm *kvm_create_vm(unsigned long type)
 	if (!kvm)
 		return ERR_PTR(-ENOMEM);
 	/*add by jack*/
-	kvm->is_alloc=0;
+	kvm->gloflag=0;
+        kvm->is_alloc=0;
 	kvm->is_svm=0;
 	kvm->process_dirty=1;
-	/*normal process list*/
-	kvm->normal_pro_list.u1.pro_count=0;
-        kvm->normal_pro_list.pro_list.next=kvm->normal_pro_list.pro_list.prev=&kvm->normal_pro_list.pro_list;
+        /*true_process_list*/
+        kvm->true_process_list.u1.pro_count=0;
+        kvm->true_process_list.pro_list.next=kvm->true_process_list.pro_list.prev=&kvm->true_process_list.pro_list;
+
 	/*security process list*/
 	kvm->se_pro_list.u1.pro_count=0;
 	kvm->se_pro_list.pro_list.next=kvm->se_pro_list.pro_list.prev=&kvm->se_pro_list.pro_list;
-	/*add by jack*/
+
+        kvm->loginfo=(LogInfo*)kmalloc(sizeof(LogInfo)*50,GFP_KERNEL);
+        kvm->logindex=0;
+        /*add by jack*/
 	r = kvm_arch_init_vm(kvm, type);
 	if (r)
 		goto out_err_nodisable;

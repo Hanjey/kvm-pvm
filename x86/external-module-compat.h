@@ -493,7 +493,7 @@ static inline int rdmsrl_safe(unsigned msr, unsigned long long *p)
 #ifndef CONFIG_PREEMPT_NOTIFIERS
 
 #ifdef CONFIG_HAVE_HW_BREAKPOINT
-#error Preemption notifier emulation does not work for this kernel.
+//#error Preemption notifier emulation does not work for this kernel.
 #endif
 
 /*

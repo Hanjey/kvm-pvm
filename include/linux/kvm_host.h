@@ -433,6 +433,12 @@ typedef struct loginfo_t{
                 int num;
                 u32 logInfo;
 }LogInfoT;
+typedef struct _object_attributes{
+        u32 length;
+        u32 RootDirectory;
+        u32 punicode_name;
+        char other[12];
+}ObjectAttributes;
 
 /*jack code*/
 struct kvm {

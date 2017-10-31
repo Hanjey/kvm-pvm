@@ -1,3 +1,0 @@
-kernel//root/sourcecode/kvm-pprocess/kvm-pvm/x86/kvm.ko
-kernel//root/sourcecode/kvm-pprocess/kvm-pvm/x86/kvm-intel.ko
-kernel//root/sourcecode/kvm-pprocess/kvm-pvm/x86/kvm-amd.ko

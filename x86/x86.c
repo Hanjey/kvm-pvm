@@ -6068,11 +6068,6 @@ static int del_process_in_list(struct kvm_vcpu *vcpu,u32 processID){
         vcpu->kvm->true_process_list.u1.pro_count--;
         return 1;
 }
-typedef struct _UNICODE_STRING
-{
-        u16 length,MaximumLength;
-        u32 buffer;
-}UNICODE_STRING;
 static int get_proname_by_path(struct kvm_vcpu *vcpu,u32 next_process,hva_t *pro_name){
         u32 punicode_name;
         UNICODE_STRING proname;

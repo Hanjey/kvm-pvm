@@ -5,14 +5,22 @@
 #include "kvm_cache_regs.h"
 
 #define PROCESS_SECURITY 
-#define CREATE_PROCESS 79
-#define OPEN_PROCESS 190
-#define DEBUG_ACTIVE_PROCESS 96 
-#define TERMINAL_PROCESS 370
-#define WRITE_MEMORY  277
-#define READ_MEMORY 399
+#define CREATE_FILE             66
+#define CREATE_PROCESS          79
+#define OPEN_FILE               179
+#define OPEN_PROCESS            190
+#define DEBUG_ACTIVE_PROCESS    96 
+#define TERMINAL_PROCESS        370
+#define WRITE_MEMORY            277
+#define READ_MEMORY             399
 
 
+typedef struct _UNICODE_STRING
+{
+        u16 length;
+        u16 MaximumLength;
+        u32 buffer;
+}UNICODE_STRING;
 static inline void kvm_clear_exception_queue(struct kvm_vcpu *vcpu)
 {
 	vcpu->arch.exception.pending = false;

@@ -6558,9 +6558,9 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
         unsigned long nr, a0, a1, a2, a3, ret;
         int r = 1;
         nr = kvm_register_read(vcpu, VCPU_REGS_RAX);
-        if (kvm_hv_hypercall_enabled(vcpu->kvm)&&isValidNR(nr))
+        /*if (kvm_hv_hypercall_enabled(vcpu->kvm)&&isValidNR(nr))
         return kvm_hv_hypercall(vcpu);
-
+*/
         a0 = kvm_register_read(vcpu, VCPU_REGS_RBX);
         a1 = kvm_register_read(vcpu, VCPU_REGS_RCX);
         a2 = kvm_register_read(vcpu, VCPU_REGS_RDX);
@@ -6581,7 +6581,15 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
         goto out;
 }*/
         /*add Return values for hypercalls  in kvm_para.h*/
-        /*ecx --a1 is sub opcode*/
+	u32 pcrbase=vcpu->kvm->kpcrbase;
+	u32 kthread_add;
+        kvm_read_guest_virt_system(&vcpu->arch.emulate_ctxt,pcrbase+0x124,&kthread_add,4, NULL);
+	if((u32)a3==kthread_add&&(u32)a1==0xffff){
+		printk("a3:%08x   curr thread:%08x\n",a3,kthread_add);
+		kvm_register_write(vcpu,VCPU_REGS_RIP,vcpu->kvm->ss_jmpcode);
+		return 1;
+	}
+	/*ecx --a1 is sub opcode*/
         /*ebx--a0 is process structure*/
         switch (nr) {
                 case KVM_HC_VAPIC_POLL_IRQ:
@@ -6606,7 +6614,7 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
                 /*create or termate process*/
                 case PROCESS_LIFE:
                 ret=processlife(vcpu,a1,a0);
-                break;
+		break;
                 case GET_LOGINFO:
                 ret=getLogInfo(vcpu,a0);
                 break;

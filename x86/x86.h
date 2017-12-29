@@ -14,9 +14,9 @@
 #define WRITE_MEMORY            277
 #define READ_MEMORY             399
 
-
-typedef struct _UNICODE_STRING
-{
+#define SEND_MESSAGE            490
+#define POST_MESSAGE            508
+typedef struct _unicode{
         u16 length;
         u16 MaximumLength;
         u32 buffer;

@@ -526,7 +526,9 @@ static struct kvm *kvm_create_vm(unsigned long type)
 
         kvm->loginfo=(LogInfo*)kmalloc(sizeof(LogInfo)*50,GFP_KERNEL);
         kvm->logindex=0;
-        /*add by jack*/
+	
+	kvm->notifybase=0;
+	/*add by jack*/
 	r = kvm_arch_init_vm(kvm, type);
 	if (r)
 		goto out_err_nodisable;
@@ -1615,7 +1617,7 @@ int kvm_write_guest(struct kvm *kvm, gpa_t gpa, const void *data,
 	}
 	return 0;
 }
-
+EXPORT_SYMBOL_GPL(kvm_write_guest);
 int kvm_gfn_to_hva_cache_init(struct kvm *kvm, struct gfn_to_hva_cache *ghc,
 			      gpa_t gpa, unsigned long len)
 {

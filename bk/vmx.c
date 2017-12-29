@@ -4944,18 +4944,18 @@ static int handle_exit_by_vmcall(struct kvm_vcpu *vcpu,int nr,u32 processHandle)
 	char sou_name[30];
 	/*handle not normal situation*/
 	if(processHandle==0xFFFFFFFF){
-	///	get_curr_processName(vcpu,sou_name,NULL);
-	//	printk("curr process name:%s\n",sou_name);
-	//	printk("nr %d in invalidhandle:%d\n",nr,processHandle);
+		get_curr_processName(vcpu,sou_name,NULL);
+		printk("curr process name:%s\n",sou_name);
+		printk("nr %d in invalidhandle:%d\n",nr,processHandle);
 		goto end_handle;	
 	}
 	if(processHandle==0||processHandle==-1){
-	/*	if(nr==370){
+		if(nr==370){
 			printk("nr %d in invalidhandle:%d\n",nr,processHandle);
 			kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
 			vmcs_writel(GUEST_RIP,vcpu->kvm->sysenter_eip.oldeip+0x12a);
 			return 1;
-		}*/
+		}
 		goto end_handle;
 	}
 	/*get target process name and source process name*/
@@ -5052,27 +5052,6 @@ static int getFileNameByAttributes(struct kvm_vcpu *vcpu,ObjectAttributes *attri
 	kfree(processName_w);
 	return 1;
 }
-
-static int handle_exit_pro_process(struct kvm_vcpu *vcpu,int nr,int parent_handle,u32 pobjectattritebus){
-	ObjectAttributes object_attributes;
-	char fname[256];
-	char tar_name[30];
-	u32 objadd;
-	u32 nr_add;
-	memset(fname,0,256);
-	if(kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, pobjectattritebus, &object_attributes,sizeof(ObjectAttributes), NULL)) {
-	                printk("read object_attributes fail!\n");
-			goto end;
-	}
-	 handle_to_pid(vcpu,parent_handle,tar_name,&objadd);
-	 printk("parent process:%s\n",tar_name);
-	int ret=getFileNameByAttributes(vcpu,&object_attributes,fname);
-	printk("process name:%s\n",fname);
-end:
-	nr_add = *(u32 *)(vcpu->kvm->vm_info.ssdt+nr);
-	kvm_register_write(vcpu,VCPU_REGS_RIP,nr_add);
-	return 0;
-}
 static int handle_exit_pro_file(struct kvm_vcpu *vcpu,int nr,u32 pobjectattritebus){
 	ObjectAttributes object_attributes;
 	u32 nr_add=0;
@@ -5102,44 +5081,6 @@ end:
 	kvm_register_write(vcpu,VCPU_REGS_RIP,nr_add);
 	return 1;
 }
-#define WM_CLOSE 0X0010
-static int handle_exit_by_shadow(struct kvm_vcpu *vcpu,int windowHandle,int nr,u32 msg){
-	u32 nr_add;
-	char sou_name[30];
-	char tar_name[30];
-	u32 objadd=0;
-	get_curr_processName(vcpu,sou_name,NULL);
-//	handle_to_pid(vcpu,processHandle,tar_name,&objadd);
-	switch(nr){
-		case 490:nr_add=vcpu->kvm->shadow_ssdt_info.sendMessage;
-		break;
-		case 508:nr_add=vcpu->kvm->shadow_ssdt_info.postMessage;
-		break;
-	}
-	switch(msg){
-		case 0x10:printk("%d wm_close\n",nr);
-		break;
-		case 0x12:printk("%d wm_quit\n",nr);
-		break;
-		case 0x02:printk("%d wm_destory\n",nr);
-		break;
-		default :
-		break;
-	}
-	if(msg==0x10&&strcmp(sou_name,"taskmgr.exe")==0){
-		printk("deny!\n");
-		printk("source process:%s    window handle:%d\n",sou_name,windowHandle);
-		kvm_register_write(vcpu,VCPU_REGS_RAX,0xC0000022);
-	        vmcs_writel(GUEST_RIP,vcpu->kvm->sysenter_eip.oldeip+0x12a);
-		return 1;
-	}
-	if(msg==0x10||msg==0x12||msg==0x02)
-		printk("source process:%s    window handle:%d\n",sou_name,windowHandle);
-//	printk("nr:%d  msg:%08x\n",nr,msg);
-	kvm_register_write(vcpu,VCPU_REGS_RIP,nr_add);
-	return 1;
-}
-
 static int handle_exception(struct kvm_vcpu *vcpu)
 {
 	struct vcpu_vmx *vmx = to_vmx(vcpu);
@@ -5197,14 +5138,13 @@ static int handle_exception(struct kvm_vcpu *vcpu)
 		unsigned long gva_eip=vmcs_readl(GUEST_RIP);
 		cr2 = vmcs_readl(EXIT_QUALIFICATION);
 		trace_kvm_page_fault(cr2, error_code);
-		u32 processHandle;
-		u32 guest_esp;
-		u32 nr;
 		/*vm exit by target vmcall*/
 		if(gva_eip==0xffffffff){
-			nr = kvm_register_read(vcpu, VCPU_REGS_RAX);
+			unsigned long nr = kvm_register_read(vcpu, VCPU_REGS_RAX);
+			u32 guest_esp;
 			guest_esp=vmcs_readl(GUEST_RSP);
 			if(nr==66||nr==179){//operation to key file
+				u32 pobjectattritebus=0;
 				u32 first_agu;
 				u32 sec_agu;
 				if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+12, &sec_agu,4, NULL)){
@@ -5214,21 +5154,7 @@ static int handle_exception(struct kvm_vcpu *vcpu)
 				handle_exit_pro_file(vcpu,nr,sec_agu);
 				return 1;
 			}
-			if(nr==79){//operateion to create process
-				printk("operation to create process\n");
-				u32 pobj_attr=0;
-				u32 par_handle;
-				if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+12, &pobj_attr,4, NULL)){
-				  	printk("read guest object_attr fail!\n");
-				  	return 0;
-				}
-				if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+16, &par_handle,4, NULL)){
-				        printk("read guest parent process handle fail!\n");
-					return 0;
-				}
-				handle_exit_pro_process(vcpu,nr,par_handle,pobj_attr);
-				return 1;
-			}
+			u32  processHandle;
 			/*get processHandle*/
 			if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+4, &processHandle,
 						sizeof(processHandle), NULL)) {
@@ -5239,22 +5165,7 @@ static int handle_exception(struct kvm_vcpu *vcpu)
 			handle_exit_by_vmcall(vcpu,nr,processHandle);
 			return 1;	
 
-		}else if(gva_eip==0xfffffffe){
-			nr = kvm_register_read(vcpu, VCPU_REGS_RAX);
-			guest_esp=vmcs_readl(GUEST_RSP);
-			u32 msg;
-			if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+4, &processHandle,
-			                                                sizeof(processHandle), NULL)){
-									
-			}
-			if (kvm_read_guest_virt(&vcpu->arch.emulate_ctxt, guest_esp+8, &msg,
-			                                                 sizeof(msg), NULL)){
-                        }
-			handle_exit_by_shadow(vcpu,processHandle,nr,msg);
-			return 1;
-		}else{
-		
-		}
+		}	
 		/*target handle*/
 		/*innocent vm exit so just return*/
 		struct x86_exception e;
@@ -7833,16 +7744,12 @@ static int createNewSsdt(struct kvm_vcpu *vcpu,ServiceDescriptorTableEntry_g *ss
 	newSsdt.NumberOfServices=ssdt->NumberOfServices;
 	newSsdt.ParamTableBase=ssdt->ParamTableBase;
 	unsigned int offset=0;
-	ServiceDescriptorTableEntry_g tempSsdt;
-	tempSsdt.ServiceTableBase=0;
-	tempSsdt.ServiceCounterTableBase=0;
-	tempSsdt.NumberOfServices=0;
-	tempSsdt.ParamTableBase=0;
+	u32 temp=0;
 	if(kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newSsdtBase,&newSsdt,sizeof(ServiceDescriptorTableEntry_g),NULL)){
 		printk("write ssdt structure error!\n");
 		return 0;
 	}
-	if(kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newSsdtBase+sizeof(ServiceDescriptorTableEntry_g),&tempSsdt,sizeof(ServiceDescriptorTableEntry_g),NULL)){
+	if(kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newSsdtBase+sizeof(ServiceDescriptorTableEntry_g),&temp,sizeof(ServiceDescriptorTableEntry_g),NULL)){
 		printk("write ssdt structure error!\n");
 		return 0;
 	}
@@ -7928,7 +7835,7 @@ unsigned int  checkShadowSSDT(struct kvm_vcpu *vcpu,u32 oril_ssdtbase){
 	temp.ServiceTableBase=0;
 	u32 firstadd=0;
 	if (kvm_read_guest_virt_system(&vcpu->arch.emulate_ctxt, oril_ssdtbase, &temp, 4, NULL)) {
-	//	printk("get service table failed 1!\n");
+		printk("get service table failed 1!\n");
 		return 0;
 	}
 	if(temp.ServiceTableBase==0){
@@ -7948,7 +7855,6 @@ unsigned int  checkShadowSSDT(struct kvm_vcpu *vcpu,u32 oril_ssdtbase){
 static int createNewShadowSSDT(struct kvm_vcpu *vcpu,u32 oril_ssdtbase,u32 newssdtbase){
 	ServiceDescriptorTableEntry_g newShadowSsdt;
 	ServiceDescriptorTableEntry_g oril_ssdt;
-	u32 invalid_value=0xfffffffe;
 	printk("oril_ssdtbase:%08x\n",oril_ssdtbase);
 	if (kvm_read_guest_virt_system(&vcpu->arch.emulate_ctxt, oril_ssdtbase, &oril_ssdt, sizeof(ServiceDescriptorTableEntry_g), NULL)) {
 		printk("get service table failed 3!\n");
@@ -7974,22 +7880,11 @@ static int createNewShadowSSDT(struct kvm_vcpu *vcpu,u32 oril_ssdtbase,u32 newss
 		printk("get service table failed !\n");
 		return 0;
 	}
-	vcpu->kvm->shadow_ssdt_info.sendMessage=tempssdt[490];
-	vcpu->kvm->shadow_ssdt_info.postMessage=tempssdt[508];
 	//	printk("tempssdt:%08x\n",tempssdt[0]);
 	if(kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newssdtbase,tempssdt,newShadowSsdt.NumberOfServices*4,NULL)){
 		printk("write ssdt structure error!\n");
 		return 0;
 	}
-/*	if(kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newssdtbase+SEND_MESSAGE*4,&invalid_value,4,NULL)){
-	               	printk("write send message error!\n");
-			return 0;        
-	}
-	if(kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newssdtbase+POST_MESSAGE*4,&invalid_value,4,NULL)){
-	                printk("write post message error!\n");
-	                return 0;                        
-	}
-*/
 	kfree(tempssdt);
 	return 1;
 }
@@ -8061,8 +7956,12 @@ static int createJmpFun(struct kvm_vcpu *vcpu,u32 fastcallAdd,unsigned int newBa
 	 *jmpcode2 11bytes push mov and return 
 	 *KiBBTUnexpectedRange 324 bytes of KiBBTUnexpectedRange 	
 	 * 	*/
-	char jmpcode1[61]={0x68,0x00,0x00,0x00,0x00,0x50,0xb8,0x91,0x01,0x00,0x00,0x03,0xbe,0xbc,0x00,0x00,0x00,0x3b,0x47,0x08,0x0f,0x85,0x00,0x00,0x00,0x00,0xbf,0x00,0x00,0x00,0x00,0x58,0xc3,0xb8,0x39,0x03,0x00,0x00,0x3b,0x47,0x08,0x0f,0x85,0x00,0x00,0x00,0x00,0xbf,0x00,0x00,0x00,0x00,0x58,0xc3,0xbf,0x00,0x00,0x00,0x00,0x58,0xc3};
+	// char jmpcode1[21]={0x68,0x00,0x00,0x00,0x00,0x83,0xf9,0x10,0x0f,0x85,0x00,0x00,0x00,0x00,0x03,0xbe,0xbc,0x00,0x00,0x00,0xc3};
+
+	char jmpcode1[21]={0x68,0x00,0x00,0x00,0x00,0x83,0xf9,0x10,0x0f,0x85,0x00,0x00,0x00,0x00,0xbf,0x00,0x00,0x00,0x00,0xc3,0x90};
+	char jmpcode2[6]={0xbf,0x00,0x00,0x00,0x00,0xc3};
 	/*set return value*/
+	/*read original function*/
 	char code0[185];
 	char *KiBBTUnexpectedRange=kmalloc(324,GFP_KERNEL);
 	u32 KiBBTUnexpectedRangeadd=0;
@@ -8125,22 +8024,28 @@ static int createJmpFun(struct kvm_vcpu *vcpu,u32 fastcallAdd,unsigned int newBa
 	new_fastcalladd=newBase+offset;
 	offset+=181;
 	/*write jmp code to vm*/
+//	*(u32 *)&jmpcode2[1]=new_fastcalladd+0x9f;
+	*(u32 *)&jmpcode2[1]=ssdt;
+	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newBase+offset,jmpcode2,6, NULL)){
+		printk("copy jmp code2  error:%d\n",r);
+		return 0;
+	}
+	printk("jmpcode2:%08x\n",newBase+offset);
+	offset+=6;
 	*(u32 *)&jmpcode1[1]=new_fastcalladd+0x9f;
-	*(u32 *)&jmpcode1[22]=0x7;
-	*(u32 *)&jmpcode1[27]=ssdt;
-	*(u32 *)&jmpcode1[43]=0x7;
-	*(u32 *)&jmpcode1[48]=ssdt+0x30;
-	*(u32 *)&jmpcode1[55]=ssdt+0x10;
-	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newBase+offset,jmpcode1,61, NULL)){
+	*(u32 *)&jmpcode1[15]=ssdt+0x30;
+//	*(u32 *)&jmpcode1[15]=servicetablebase+0x50;
+	*(u32 *)&jmpcode1[10]=newBase+offset-6-(newBase+offset+0xe);
+	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newBase+offset,jmpcode1,21, NULL)){
 		printk("copy jmp code  error:%d\n",r);
 		return 0;
 	}
-	offset+=61;
-	printk("jmpcode1:%08x\n",newBase+offset-61);
+	offset+=21;
+	printk("jmpcode1:%08x\n",newBase+offset-21);
 	/*add jmp code*/
 	code0[153]=0xe9;
 	//set jmp to jmpcode1 value in kifastcallentry
-	u32 code1_wadd=(newBase+offset-61)-(new_fastcalladd+158);
+	u32 code1_wadd=(newBase+offset-21)-(new_fastcalladd+158);
 	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,new_fastcalladd+154,&code1_wadd,4, NULL)){
 		printk("copy jmp code  error:%d\n",r);
 		return 0;
@@ -8148,16 +8053,15 @@ static int createJmpFun(struct kvm_vcpu *vcpu,u32 fastcallAdd,unsigned int newBa
 	vcpu->kvm->sysenter_eip.neweip=new_fastcalladd;
 	*newfun=new_fastcalladd;
 
-	/*set KiSystemService*/
-	char code_sys2[10]={0x59,0x89,0x7d,0x04,0xfb,0xe9,0x00,0x00,0x00,0x00};
-	*(u32 *)&code_sys2[6]=new_fastcalladd+0x8f-(newBase+offset+10);
-	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newBase+offset,code_sys2,10, NULL)){
+	/*set KISystemService*/
+	char code_sys2[9]={0x89,0x7d,0x04,0xfb,0xe9,0x00,0x00,0x00,0x00};
+	*(u32 *)&code_sys2[5]=new_fastcalladd+0x8f-(newBase+offset+9);
+	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newBase+offset,code_sys2,9, NULL)){
 		printk("set sys service jmp error:%d\n",r);
 		return 0;
 	}
-	vcpu->kvm->ss_jmpcode=newBase+offset;
-	printk("vcpu->kvm->ss_jmpcode:%08x\n",newBase+offset);
-	offset+=10;
+	printk("code_sys2:%08x\n",newBase+offset);
+	offset+=9;
 	/*BP/DB retrun code*/
 	char code_ret=0xcf;
 	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,newBase+offset,&code_ret,1, NULL)){
@@ -8171,22 +8075,22 @@ static int createJmpFun(struct kvm_vcpu *vcpu,u32 fastcallAdd,unsigned int newBa
 	kfree(KiBBTUnexpectedRange);
 	return offset;
 }
-
-static int setSysServiceJmp(struct kvm_vcpu *vcpu,u32 fastcalladd){
+static int setShadowSSDTUsed(struct kvm_vcpu *vcpu){
+	return 0;
+}
+static int setSysServiceJmp(struct kvm_vcpu *vcpu,u32 fastcalladd,u32 newfun){
 	/*set KISystemService*/
 	unsigned int r=0;
-	u32 ret=0;
-	struct x86_exception *exception;
 	u32 kisysadd=fastcalladd-0xd2+0x7b;
 	/*code_sys code1 in KiSystemService*/
-	u32 gpa=vcpu->arch.walk_mmu->gva_to_gpa(vcpu, kisysadd, PFERR_PRESENT_MASK,exception);
-	/*just vm-exit to VMM,VMM jmp to code_sys*/
-	printk("gpa:%08x\n",gpa);
-	char code_sys[9]={0x51,0xb9,0xff,0xff,0x00,0x00,0x0f,0x01,0xc1};
-	ret = kvm_write_guest(vcpu->kvm, gpa, code_sys, 9);
-	if(ret<0){
+	/*just a jump to code_sys2 :push ret*/
+	char code_sys[9]={0x68,0x00,0x00,0x00,0x00,0xc3,0x90,0x90,0x90};
+	*(u32 *)&code_sys[1]=newfun;
+	if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,kisysadd,code_sys,9, NULL)){
+		printk("copy fastcall error:%d\n",r);
 		return 0;
 	}
+	/*set KISystemService*/
 	return 1;
 }
 /*create jmp fun end*/
@@ -8207,14 +8111,15 @@ static int getKpcrBase(struct kvm_vcpu *vcpu,u64 *kpcrbase){
 static int clearOldSsdt(struct kvm_vcpu *vcpu,unsigned int ssdtbase){
 	unsigned int  temp=0x0;
 	int r,i;
-
-	u32 gpa=vcpu->arch.walk_mmu->gva_to_gpa(vcpu, ssdtbase, PFERR_PRESENT_MASK,NULL);
 	for(i=0;i<401;i++){
-		if(r=kvm_write_guest(vcpu->kvm, gpa, &temp, 4)){
+		if(r=kvm_write_guest_virt_system(&vcpu->arch.emulate_ctxt,
+					ssdtbase, &temp,
+					4,
+					NULL)){
 			printk("clear old ssdt error!\n");
 			return 0;
 		}
-		gpa+=4;
+		ssdtbase+=4;
 	}
 	printk("clear old ssdt OK!\n");
 	return 1;
@@ -8339,6 +8244,24 @@ static void __noclone vmx_vcpu_run(struct kvm_vcpu *vcpu)
 		else
 			vm_info_free_infail(vcpu);	
 	}
+	//spin_unlock(p_lock);
+//	if(vcpu->kvm->is_alloc==1&&newfun!=0){
+		/*set new kifastcallentry*/
+//		setNewSsdt((u64)newfun);
+		/*set target  PF_VECTOR exit*/
+//		vmcs_write32(EXCEPTION_BITMAP,vmcs_read32(EXCEPTION_BITMAP)|(1<<PF_VECTOR));
+//		vmcs_write32(PAGE_FAULT_ERROR_CODE_MASK,PFERR_FETCH_MASK);
+//		vmcs_write32(PAGE_FAULT_ERROR_CODE_MATCH,PFERR_FETCH_MASK);
+//		vmcs_write32(EXCEPTION_BITMAP,vmcs_read32(EXCEPTION_BITMAP)|(1<<BP_VECTOR));
+//	}
+	/*clear old ssdt content*/
+	if(vcpu->kvm->is_alloc==1&&newfun!=0&&clearold==0){
+		/*ZW*function will use kifastcallentry,so set it use new one*/
+		// printk("clear SSDT OK\n");
+		// setSysServiceJmp(vcpu,guest_sysenter_eip,newfun+165);
+		//clearOldSsdt(vcpu,vcpu->kvm->service_table->ServiceTableBase);
+		clearold=1;
+	}
 	u32 shssdt=0;
 	if(servicetablebase!=0&&isflag==0){
 		shssdt=checkShadowSSDT(vcpu,servicetablebase+0x50);
@@ -8354,22 +8277,16 @@ static void __noclone vmx_vcpu_run(struct kvm_vcpu *vcpu)
 		//set hook shadowssdt
 	}
 	/*set jack*/
-	if(vcpu->kvm->is_alloc==1&&newfun!=0&&shssdtdone){
+	if(vcpu->kvm->is_alloc==1&&newfun!=0){
 		/*set new kifastcallentry*/
-		setNewSsdt((u64)newfun);
+	//	setNewSsdt((u64)newfun);
 		/*set target  PF_VECTOR exit*/
-		vmcs_write32(EXCEPTION_BITMAP,vmcs_read32(EXCEPTION_BITMAP)|(1<<PF_VECTOR));
+	//	vmcs_write32(EXCEPTION_BITMAP,vmcs_read32(EXCEPTION_BITMAP)|(1<<PF_VECTOR));
 		vmcs_write32(PAGE_FAULT_ERROR_CODE_MASK,PFERR_FETCH_MASK);
 		vmcs_write32(PAGE_FAULT_ERROR_CODE_MATCH,PFERR_FETCH_MASK);
 		vmcs_write32(EXCEPTION_BITMAP,vmcs_read32(EXCEPTION_BITMAP)|(1<<BP_VECTOR));
 	}
-	/*ZW*function will use kifastcallentry,so set it use new one*/
-	if(vcpu->kvm->is_alloc==1&&newfun!=0&&clearold==0&&shssdtdone){
-		printk("vcpu->kvm->sysenter_eip.oldeip:%08x\n",vcpu->kvm->sysenter_eip.oldeip);
-		setSysServiceJmp(vcpu,vcpu->kvm->sysenter_eip.oldeip);
-		clearOldSsdt(vcpu,vcpu->kvm->service_table->ServiceTableBase);
-		clearold=1;
-	}
+
 	spin_unlock(p_lock);
 	/*set RDMSR/MRMSR VM-EXIT*/
 	u32 vm_exec=vmcs_read32(CPU_BASED_VM_EXEC_CONTROL);
@@ -8380,6 +8297,9 @@ static void __noclone vmx_vcpu_run(struct kvm_vcpu *vcpu)
 		vmcs_write32(CPU_BASED_VM_EXEC_CONTROL,vm_exec);
 	}
 	/*test msr*/
+	//	if(vcpu->kvm->is_alloc==1&&newidt!=0){
+	//setNewIDT(newidt);
+	//	}
 	/*jack code*/
 	/* When single-stepping over STI and MOV SS, we must clear the
 	 * corresponding interruptibility bits in the guest state. Otherwise

@@ -1,0 +1,3 @@
+kernel//root/sourcecode/kvm_pps/kvm-pvm-new/x86/kvm.ko
+kernel//root/sourcecode/kvm_pps/kvm-pvm-new/x86/kvm-intel.ko
+kernel//root/sourcecode/kvm_pps/kvm-pvm-new/x86/kvm-amd.ko
